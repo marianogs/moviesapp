@@ -24,10 +24,8 @@ describe Person, type: :model do
 
   describe 'relations' do
     context 'as director' do
-      subject { build :director }
-      before do
-        subject.add_movie(create(:movie),:director)
-      end
+      subject { create :director }
+
       it do
         expect(subject.movies.count).to eq(1)
       end

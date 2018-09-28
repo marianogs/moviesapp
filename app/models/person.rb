@@ -5,9 +5,7 @@ class Person < ApplicationRecord
   has_many :movies, through: :movie_roles
 
   def add_movie(movie,role)
-    MovieRole.create(movie: movie, 
-                     name: role,
-                     person: self)
+    movie_roles.create(movie: movie, 
+                       name: role)
   end
-
 end

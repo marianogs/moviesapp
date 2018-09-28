@@ -4,8 +4,7 @@ class Movie < ApplicationRecord
 
   def add_member(person,role)
     movie_roles.create(person: person, 
-                       name: role,
-                       movie: self)
+                       name: role)
   end
 
   def casting
