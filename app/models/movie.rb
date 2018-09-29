@@ -1,6 +1,7 @@
 class Movie < ApplicationRecord
   has_many :movie_roles
   has_many :people, through: :movie_roles
+  include HasParticipants
 
   validates_presence_of :title,:release_year
 
@@ -9,15 +10,9 @@ class Movie < ApplicationRecord
                        name: role)
   end
 
-  def casting
-    Person.find(movie_roles.actor.pluck(:person_id))
-  end
+  has_participants :actors
+  has_participants :directors
+  has_participants :producers
 
-  def directors
-    Person.find(movie_roles.director.pluck(:person_id))
-  end
-
-  def producers
-    Person.find(movie_roles.producer.pluck(:person_id))
-  end
+  alias :casting :actors 
 end

@@ -30,5 +30,4 @@ describe Movie, type: :model do
       end
     end
   end
-
 end
