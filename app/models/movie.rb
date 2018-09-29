@@ -2,6 +2,8 @@ class Movie < ApplicationRecord
   has_many :movie_roles
   has_many :people, through: :movie_roles
 
+  validates_presence_of :title,:release_year
+
   def add_member(person,role)
     movie_roles.create(person: person, 
                        name: role)
