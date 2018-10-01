@@ -6,6 +6,11 @@ class Person < ApplicationRecord
 
   def add_movie(movie,role)
     movie_roles.create(movie: movie, 
-                       name: role)
+                       name: role.to_sym)
   end
+
+  scope :director, -> { joins(:movie_roles).where(movie_roles: { name: 'director' } ) }
+  scope :actor, -> { joins(:movie_roles).where(movie_roles: { name: 'director' } ) }
+  scope :producer, -> { joins(:movie_roles).where(movie_roles: { name: 'director' } ) }
+
 end

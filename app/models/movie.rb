@@ -1,13 +1,14 @@
 class Movie < ApplicationRecord
   has_many :movie_roles
-  has_many :people, through: :movie_roles
+  has_many :people,-> { distinct.readonly }, through: :movie_roles
   include HasParticipants
 
   validates_presence_of :title,:release_year
 
   def add_member(person,role)
-    movie_roles.create(person: person, 
-                       name: role)
+    MovieRole.create(person_id: person.id, 
+                     movie_id: self.id,
+                     name: role.to_sym)
   end
 
   def to_json(options)

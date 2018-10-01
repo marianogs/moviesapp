@@ -5,9 +5,9 @@ FactoryBot.define do
 
     factory :movie_with_members do
       after(:create) do |movie|
-        movie.add_member(create(:person),:actor)
-        movie.add_member(create(:person),:director)
-        movie.add_member(create(:person),:producer)
+        movie.add_member(Person.first || create(:person),:actor)
+        movie.add_member(Person.first || create(:person),:director)
+        movie.add_member(Person.first || create(:person),:producer)
       end
     end
   end

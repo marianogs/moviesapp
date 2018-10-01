@@ -4,11 +4,8 @@ module HasParticipants
   included do
     def self.has_participants(role_name)
       self.define_method(role_name) do
-        Person.find(movie_roles.send(role_name.to_s.singularize).pluck(:person_id))
+        people.joins(:movie_roles).where('movie_roles': {name: role_name.to_s.singularize } )
       end
     end
-  end
-
-  class_methods do
   end
 end
