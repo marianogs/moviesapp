@@ -106,7 +106,7 @@ describe  Api::V1::MoviesController do
   describe 'POST /api/v1/movies', type: :request do
     context 'when attributes are invalid'  do
       it 'returns 422' do
-        post '/api/v1/movies/', params: { movie: { title: '', release_year: '' } }, headers:  {'TOKEN' => token},headers:  {'TOKEN' => token}
+        post '/api/v1/movies/', params: { movie: { title: '', release_year: '' } }, headers:  {'TOKEN' => token}
         expect(response.code).to eq("422")
       end
 
