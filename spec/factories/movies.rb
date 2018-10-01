@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :movie do
-    title "Grand Torino"
-    release_year 2006
+    title { "Grand Torino" }
+    release_year { 2006 }
 
     factory :movie_with_members do
       after(:create) do |movie|
