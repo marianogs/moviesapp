@@ -13,10 +13,10 @@ describe  Api::V1::MoviesController do
   end
 
   describe 'GET /api/v1/movies/:id', type: :request do
-    context('movie no has casting' ) do
-    end
     let(:movie){ create :movie }
     before(:each){ get "/api/v1/movies/#{movie.id}" }
+    context('movie no has casting' ) do
+    end
 
     it 'returns movie' do
       expect(JSON.parse(response.body)['title']).to eq('Grand Torino')
@@ -68,6 +68,12 @@ describe  Api::V1::MoviesController do
       it 'returns 422' do
         expect(response.code).to eq('422')
       end
+
+    end
+
+    it 'returns 401 when token is invalid' do
+      put "/api/v1/movies/#{movie.id}", params: { movie: { title: '' } } ,headers:  {'TOKEN' => 'invalid'}
+      expect(response.code).to eq('401')
     end
 
     context 'with valid attributes' do
@@ -85,10 +91,15 @@ describe  Api::V1::MoviesController do
 
   describe 'DELETE /api/v1/movies/:id' do
     let(:movie){ create :movie }
-    before { delete "/api/v1/movies/#{movie.id}",headers:  {'TOKEN' => token} }
     it 'returns 204'  do
+      delete "/api/v1/movies/#{movie.id}",headers:  {'TOKEN' => token}
       expect(Movie.count).to eq(0)
       expect(response.code).to eq('204')
+    end
+
+    it 'returns 401 when token is invalid' do
+      delete "/api/v1/movies/#{movie.id}",headers:  {'TOKEN' => 'invalid'}
+      expect(response.code).to eq('401')
     end
   end
 
@@ -103,6 +114,11 @@ describe  Api::V1::MoviesController do
         post '/api/v1/movies/', params: { movie: { title: '', release_year: '' } },headers:  {'TOKEN' => token}
         expect(response.code).to eq("422")
       end
+    end
+
+    it 'returns 401 when token is invalid' do
+      post "/api/v1/movies/", params: { movie: { title: '' } } ,headers:  {'TOKEN' => 'invalid'}
+      expect(response.code).to eq('401')
     end
 
     context 'when attributes are valid' do
