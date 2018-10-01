@@ -1,7 +1,22 @@
 class Movie < ApplicationRecord
   has_many :movie_roles
-  has_many :people,-> { distinct.readonly }, through: :movie_roles
-  include HasParticipants
+  has_many :people,-> { distinct.readonly }, through: :movie_roles do
+    def with_role(role)
+      where(movie_roles: {name: role })
+    end
+  end
+
+  def directors
+    people.with_role(:director)
+  end
+
+  def producers
+    people.with_role(:producer)
+  end
+
+  def casting
+    people.with_role(:actor)
+  end
 
   validates_presence_of :title,:release_year
 
@@ -15,10 +30,4 @@ class Movie < ApplicationRecord
     super(:only => [:title,:release_year],
           methods: [ :directors,:casting,:producers ])
   end
-
-  has_participants :actors
-  has_participants :directors
-  has_participants :producers
-
-  alias :casting :actors 
 end
