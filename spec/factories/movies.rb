@@ -3,7 +3,7 @@ FactoryBot.define do
     title "Grand Torino"
     release_year 2006
 
-    factory :movie_with_people do
+    factory :movie_with_members do
       after(:create) do |movie|
         movie.add_member(create(:person),:actor)
         movie.add_member(create(:person),:director)

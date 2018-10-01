@@ -10,21 +10,21 @@ describe Movie, type: :model do
 
   describe 'relations' do
     context 'when have casting' do
-      let(:subject){ create(:movie_with_people) }
+      let(:subject){ create(:movie_with_members) }
       it do
         expect(subject.casting.first.aliases).to eq('Clint Eastwood')
       end
     end
 
     context 'when have director' do
-      let(:subject){ create(:movie_with_people) }
+      let(:subject){ create(:movie_with_members) }
       it do
         expect(subject.directors.first.aliases).to eq('Clint Eastwood')
       end
     end
 
     context 'when have producers' do
-      let(:subject){ create(:movie_with_people) }
+      let(:subject){ create(:movie_with_members) }
       it do
         expect(subject.producers.first.aliases).to eq('Clint Eastwood')
       end

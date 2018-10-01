@@ -10,6 +10,11 @@ class Movie < ApplicationRecord
                        name: role)
   end
 
+  def to_json(options)
+    super(:only => [:title,:release_year],
+          methods: [ :directors,:casting,:producers ])
+  end
+
   has_participants :actors
   has_participants :directors
   has_participants :producers

@@ -13,6 +13,8 @@ describe  Api::V1::MoviesController do
   end
 
   describe 'GET /api/v1/movies/:id', type: :request do
+    context('movie no has casting' ) do
+    end
     let(:movie){ create :movie }
     before(:each){ get "/api/v1/movies/#{movie.id}" }
 
@@ -20,11 +22,30 @@ describe  Api::V1::MoviesController do
       expect(JSON.parse(response.body)['title']).to eq('Grand Torino')
     end
 
+    it 'returns release year in roman numerals' do
+      pending
+      fail
+    end
+
     it 'returns 200' do
       expect(response.code).to eq("200")
     end
 
     context 'movie has casting' do
+      let(:movie) { create(:movie_with_members) }
+      let(:movie_body){ JSON.parse(response.body) } 
+
+      it 'returns movie directors' do
+        expect(movie_body['directors'][0]['aliases']).to eq('Clint Eastwood')
+      end
+
+      it 'returns movie casting' do
+        expect(movie_body['casting'][0]['aliases']).to eq('Clint Eastwood')
+      end
+
+      it 'returns movie producers' do
+        expect(movie_body['producers'][0]['aliases']).to eq('Clint Eastwood')
+      end
     end
   end
 
@@ -40,7 +61,7 @@ describe  Api::V1::MoviesController do
         expect(JSON.parse(response.body)).to have_key('message')
       end
 
-      it 'not update movie' do
+      it 'cannot update movie' do
         expect(movie.reload.title).to eq('Grand Torino')
       end
 
