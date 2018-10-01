@@ -32,4 +32,4 @@
 
 #### UserTokens
 
-* `POST user_token`
+* `POST api/v1/user_token/`
