@@ -13,7 +13,7 @@
 * `PUT api/v1/movies/:id`
 * `DELETE api/v1/movies/:id`
 
-#### Roles Resources
+#### Movie members resources
 
 * `POST api/v1/movies/actor/:person_id`
 * `DELETE api/v1/movies/:id/actor/:person_id`
