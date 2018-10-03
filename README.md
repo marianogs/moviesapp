@@ -13,16 +13,17 @@
 * `PUT api/v1/movies/:id`
 * `DELETE api/v1/movies/:id`
 
-#### Roles Resources
+#### Movie members resources
+* `POST api/v1/movies/:role_name/:person_id`
+  - `POST api/v1/movies/casting/:person_id`
+  - `POST api/v1/movies/directors/:person_id`
+  - `POST api/v1/movies/producers/:person_id`
 
-* `POST api/v1/movies/actor/:person_id`
-* `DELETE api/v1/movies/:id/actor/:person_id`
+* `DELETE api/v1/movies/:role_name/:person_id`
 
-* `POST api/v1/movies/director/:person_id`
-* `DELETE api/v1/movies/:id/director/:person_id`
-
-* `POST api/v1/movies/producer/:person_id`
-* `DELETE api/v1/movies/:id/producer/:person_id`
+  - `DELETE api/v1/movies/:id/casting/:person_id`
+  - `DELETE api/v1/movies/:id/directors/:person_id`=
+  - `DELETE api/v1/movies/:id/producers/:person_id`
 
 ### People Resources
 
