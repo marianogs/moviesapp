@@ -14,16 +14,8 @@
 * `DELETE api/v1/movies/:id`
 
 #### Movie members resources
-* `POST api/v1/movies/:role_name/:person_id`
-  - `POST api/v1/movies/casting/:person_id`
-  - `POST api/v1/movies/directors/:person_id`
-  - `POST api/v1/movies/producers/:person_id`
-
-* `DELETE api/v1/movies/:role_name/:person_id`
-
-  - `DELETE api/v1/movies/:id/casting/:person_id`
-  - `DELETE api/v1/movies/:id/directors/:person_id`=
-  - `DELETE api/v1/movies/:id/producers/:person_id`
+* `POST api/v1/movies/members`
+* `DELETE api/v1/movies/member/:id`
 
 ### People Resources
 
