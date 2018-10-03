@@ -8,6 +8,12 @@ describe Movie, type: :model do
     it { is_expected.to respond_to(:release_year) }
   end
 
+  describe '#roman_release_year' do
+    it do
+      expect(create(:movie).roman_release_year).to eq('MMVI')
+    end
+  end
+
   describe '#people' do
     let(:movie){ create(:movie_with_members) }
     context 'when director/actor/member is the same person' do

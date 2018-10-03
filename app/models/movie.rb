@@ -20,6 +20,10 @@ class Movie < ApplicationRecord
 
   validates_presence_of :title,:release_year
 
+  def roman_release_year
+    release_year.to_roman
+  end
+
   def add_member(person,role)
     MovieRole.create(person_id: person.id, 
                      movie_id: self.id,
@@ -28,6 +32,6 @@ class Movie < ApplicationRecord
 
   def to_json(options)
     super(:only => [:title,:release_year],
-          methods: [ :directors,:casting,:producers ])
+          methods: [ :directors,:casting,:producers,:roman_release_year ])
   end
 end

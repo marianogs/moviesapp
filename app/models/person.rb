@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+  #todo move aliases to another table or array
+
   validates_presence_of :first_name,:last_name,:aliases
 
   has_many :movie_roles, class_name: "MovieRole"
