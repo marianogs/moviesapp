@@ -100,18 +100,18 @@ describe  Api::V1::PeopleController do
   describe 'POST /api/v1/people', type: :request do
     context 'when attributes are invalid'  do
       it 'returns 422' do
-        post '/api/v1/people/', params: { person: { title: '', release_year: '' } }, headers:  {'TOKEN' => token}
+        post '/api/v1/people/', params: { person: { first_name: '' } }, headers:  {'TOKEN' => token}
         expect(response.code).to eq("422")
       end
 
       it 'returns error json messages' do
-        post '/api/v1/people/', params: { person: { title: '', release_year: '' } },headers:  {'TOKEN' => token}
+        post '/api/v1/people/', params: { person: { first_name: '' } },headers:  {'TOKEN' => token}
         expect(response.code).to eq("422")
       end
     end
 
     it 'returns 401 when token is invalid' do
-      post "/api/v1/people/", params: { person: { title: '' } } ,headers:  {'TOKEN' => 'invalid'}
+      post "/api/v1/people/", params: { person: { first_name: '' } } ,headers:  {'TOKEN' => 'invalid'}
       expect(response.code).to eq('401')
     end
 
