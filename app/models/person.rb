@@ -19,7 +19,7 @@ class Person < ApplicationRecord
     movies.with_role(:producer)
   end
 
-  def actor
+  def performances
     movies.with_role(:actor)
   end
 
@@ -28,4 +28,8 @@ class Person < ApplicationRecord
                        name: role.to_sym)
   end
 
+  def to_json(options)
+    super(:only => [:first_name,:last_name,:aliases],
+          methods: [ :directions,:performances,:productions ])
+  end
 end
