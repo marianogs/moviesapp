@@ -31,7 +31,7 @@ class Movie < ApplicationRecord
   end
 
   def to_json(options)
-    super(:only => [:title,:release_year],
+    super(:only => [:title,:release_year,:roman_release_year],
           methods: [ :directors,:casting,:producers,:roman_release_year ])
   end
 end

@@ -7,11 +7,11 @@
 
 #### Movies Resources
 
-* `GET api/v1/movies`
-* `POST api/v1/movies`
-* `GET api/v1/movies/:id`
-* `PUT api/v1/movies/:id`
-* `DELETE api/v1/movies/:id`
+- **[<code>GET</code> api/v1/movies](https://github.com/marianogs/moviesapp/blob/master/endpoints/movie/GET_movies.md)**
+- **[<code>POST</code> api/v1/movies](https://github.com/marianogs/moviesapp/blob/master/endpoints/movie/POST_movies.md)**
+- **[<code>GET</code> api/v1/movies/:id](https://github.com/marianogs/moviesapp/blob/master/endpoints/movie/GET_movies_id.md)**
+- **[<code>PUT</code> api/v1/movies/:id](https://github.com/marianogs/moviesapp/blob/master/endpoints/movie/PUT_movies_id.md)**
+- **[<code>DELETE</code> api/v1/movies/:id](https://github.com/marianogs/moviesapp/blob/master/endpoints/movie/DELETE_movies_id.md)**
 
 #### Movie members resources
 * `POST api/v1/movies/members`

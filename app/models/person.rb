@@ -28,8 +28,8 @@ class Person < ApplicationRecord
                        name: role.to_sym)
   end
 
-  def to_json(options)
-    super(:only => [:first_name,:last_name,:aliases],
+  def to_json(options={})
+    super(:only => [:id,:first_name,:last_name,:aliases],
           methods: [ :directions,:performances,:productions ])
   end
 end
